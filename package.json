@@ -5,7 +5,7 @@
   "scripts": {
     "start": "node dist/server/",
     "dev": "vite --host",
-    "build": "tsc && vite build && tsc -p tsconfig.server.json",
+    "build": "tsc && vite build && tsc -p tsconfig.server.json && node dist/server/",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "dev-node": "tsx watch src/server"
