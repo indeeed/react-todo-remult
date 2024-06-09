@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    ports:
+      - "3002:3002"
+    environment:
+      - DATABASE_URL=postgres://postgres:1234@postgres/testing
+      - NODE_ENV=production
+      - PORT=3002
+    depends_on:
+      - postgres
+    networks:
+      - webnet
+
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_DB: testing
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1234
+    ports:
+      - "5432:5432"
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge
